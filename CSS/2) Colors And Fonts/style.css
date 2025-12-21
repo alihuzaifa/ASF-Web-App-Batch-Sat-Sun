@@ -1,0 +1,44 @@
+* {
+    font-family: sans-serif;
+}
+
+@font-face {
+    font-family: "paragraph";
+    src: url("fonts/Poppins-Light.ttf");
+}
+
+@font-face {
+    font-family: "heading";
+    src: url("fonts/Poppins-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: "sub-heading";
+    src: url("fonts/Poppins-Bold.ttf");
+}
+
+.heading {
+    font-family: "heading";
+}
+
+.subheading {
+    font-family: "sub-heading";
+    background-color: aqua;
+}
+
+.para {
+    font-family: "paragraph";
+}
+
+
+
+/* body {
+    font-size: 20px;
+}
+
+p {
+    font-size: .75em;
+} */
+/* p {
+    font-family: "paragraph";
+} */

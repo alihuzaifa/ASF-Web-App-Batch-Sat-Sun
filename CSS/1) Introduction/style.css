@@ -1,0 +1,62 @@
+/* * {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p {
+    color: red;
+} */
+
+/* .special {
+    color: green;
+}
+
+.special2 {
+    background-color: aqua;
+}
+
+#heading {
+    color: blue;
+} */
+
+
+
+/* div>p {
+    color: red;
+}
+
+div p {
+    color: green;
+} */
+
+
+
+
+
+/* h1+h2 {
+    color: red;
+} */
+/* h1~h2 {
+    color: red;
+} */
+
+/* 0 255 */
+
+
+/* body {
+    background-color: rgba(25, 207, 49);
+    color: rgba(255, 255, 255, 1);
+    background-color: #19cf31;
+    color: #ffffff;
+    opacity: .7;
+} */
+
+
+.box1 div {
+    background-color: red;
+    color: white;
+}
+
+.box2 div {
+    background-color: green;
+    color: white;
+}
