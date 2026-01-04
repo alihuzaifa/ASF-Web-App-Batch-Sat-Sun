@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saylani Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="header-box">
+        <h1>Registration Form</h1>
+    </div>
+
+    <h2>Location & Course Details 🌍</h2>
+    <!-- country dropdown -->
+    <label>Select Country <span class="required">*</span></label>
+    <select name="country" class="dropdown">
+        <option value=""></option>
+        <option value="Pakistan">Pakistan</option>
+        <option value="Turkey">Turkey</option>
+        <option value="Yemen">Yemen</option>
+    </select>
+
+    <br />
+    <br />
+
+    <!-- preference dropdown -->
+    <label>Select class preference <span class="required">*</span></label>
+    <select name="preference" class="dropdown">
+        <option value=""></option>
+        <option value="Onsite">Onsite</option>
+        <option value="Online">Online</option>
+    </select>
+
+    <br />
+    <br />
+    <!-- gender dropdown -->
+    <label>Select Gender <span class="required">*</span></label>
+    <select name="gender" class="dropdown">
+        <option value=""></option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+
+
+    <br />
+    <br />
+    <!-- city dropdown -->
+    <label>Select City <span class="required">*</span></label>
+    <select name="city" class="dropdown">
+        <option value=""></option>
+        <option value="Karachi">Karachi</option>
+        <option value="Lahore">Lahore</option>
+    </select>
+
+    <br />
+    <br />
+    <!-- course dropdown -->
+    <label>Select Course <span class="required">*</span></label>
+    <select name="course" class="dropdown">
+        <option value=""></option>
+        <option value="Generative Ai">Generative Ai</option>
+        <option value="Agentic Ai">Agentic Ai</option>
+    </select>
+
+    <!-- Personal Details -->
+    <h2>🙋🏻‍♂️ Personal Information</h2>
+    <label>Full Name <span class="required">*</span></label>
+    <input type="text" name="fullName" class="inputEl" />
+    <br />
+    <br />
+    <label>Father Name <span class="required">*</span></label>
+    <input type="text" name="fatherName" class="inputEl" />
+    <br />
+    <br />
+    <label>Email <span class="required">*</span></label>
+    <input type="email" name="email" class="inputEl" />
+    <br />
+    <br />
+    <label>Phone <span class="required">*</span></label>
+    <input type="number" name="phone" class="inputEl" />
+    <br />
+    <br />
+    <label>ID Number <span class="required">*</span></label>
+    <input type="number" name="idNumber" class="inputEl" />
+    <br />
+    <br />
+    <label>Father's ID Number</label>
+    <input type="number" name="fIdNumber" class="inputEl" />
+    <br />
+    <br />
+    <label>Date Of Birth <span class="required">*</span></label>
+    <input type="date" name="fIdNumber" class="inputEl" />
+    <br />
+    <br />
+    <label>Address <span class="required">*</span></label>
+    <textarea name="address" class="detail-box"></textarea>
+    <br />
+    <br />
+
+
+    <!-- Education & Technical Details -->
+    <h2>🎓 Education & Technical Details</h2>
+    <label>Computer Proficiency <span class="required">*</span></label>
+    <select name="proficiency" class="dropdown">
+        <option value=""></option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+        <option value="Expert">Expert</option>
+    </select>
+    <label>Last Qualification <span class="required">*</span></label>
+    <select name="lastQualification" class="dropdown">
+        <option value=""></option>
+        <option value="Matric">Matric</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Graduation">Graduation</option>
+    </select>
+    <label>Where did you hear about us? <span class="required">*</span></label>
+    <select name="hear" class="dropdown">
+        <option value=""></option>
+        <option value="Social Media">Social Media</option>
+        <option value="Frienda">Frienda</option>
+    </select>
+
+    <br />
+    <br />
+    <label>Do you have a Laptop? <span class="required">*</span></label>
+    <br />
+    <input type="radio" name="isLaptopAvailable" /> Yes
+    <input type="radio" name="isLaptopAvailable" /> No
+    <br />
+    <br />
+
+    <label>Upload Your Picture</label>
+    <br />
+    <input type="file" name="profile-picture" />
+    <br />
+    <br />
+
+    <button class="submit-button">Submit Registration</button>
+
+
+</body>
+
+</html>
