@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* .custome-container {
+    height: 100vh;
+    background-color: red;
+}
+
+.custome-container-fluid {
+    background-color: green;
+    height: 100vh;
+} */
+
+input:focus {
+    outline: none !important;
+}
+
+.box {
+    height: 200px;
+    background-color: red;
+    border: 1px solid black;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.footer {
+    margin: auto 45px;
+}
+
+.form-control {
+    outline: none !important;
+}
