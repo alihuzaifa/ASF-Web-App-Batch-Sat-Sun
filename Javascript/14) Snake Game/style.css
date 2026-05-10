@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #020617);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+/* Main Snake Board */
+.box {
+    width: 600px;
+    height: 600px;
+
+    display: grid;
+    grid-template-rows: repeat(20, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+
+    background: #0b1220;
+
+    border: 5px solid #38bdf8;
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 15px #38bdf8,
+        0 0 40px rgba(56, 189, 248, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+    overflow: hidden;
+    position: relative;
+}
+
+/* Optional Grid Effect */
+.box div {
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Snake Body */
+.snake {
+    background: linear-gradient(145deg, #22c55e, #15803d);
+    border-radius: 8px;
+
+    box-shadow:
+        0 0 10px #22c55e,
+        inset 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Snake Head */
+.head {
+    background: linear-gradient(145deg, #4ade80, #16a34a);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 15px #4ade80,
+        0 0 25px rgba(74, 222, 128, 0.8);
+}
+
+/* Food */
+.food {
+    background: radial-gradient(circle, #ff4d6d, #e11d48);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 12px #ff4d6d,
+        0 0 25px rgba(255, 77, 109, 0.7);
+
+    animation: pulse 0.8s infinite alternate;
+}
+
+/* Food Animation */
+@keyframes pulse {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}

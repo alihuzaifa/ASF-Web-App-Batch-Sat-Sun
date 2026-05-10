@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #c6bebe;
+}
+
+/* Container */
+.piano {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Row layout */
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+/* White keys */
+.white {
+    width: 60px;
+    height: 180px;
+    background: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.white:active {
+    background: #ddd;
+    transform: translateY(3px);
+}
+
+/* Black keys */
+.black {
+    width: 60px;
+    height: 180px;
+    background: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.black:active {
+    background: #333;
+    transform: translateY(3px);
+}
