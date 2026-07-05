@@ -1,0 +1,4 @@
+const PROJECTURL = "https://pffjnyksgjwriwdynyfe.supabase.co"
+const ANON_PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmZmpueWtzZ2p3cml3ZHlueWZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMxMzc0MTgsImV4cCI6MjA5ODcxMzQxOH0.9H6hyH5c1JLVzaX3kINMhtIfoK-9i6iIOdiNKPK5d3w"
+
+export { PROJECTURL, ANON_PUBLIC_KEY }
