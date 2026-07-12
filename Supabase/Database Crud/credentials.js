@@ -1,0 +1,3 @@
+const PROJECTURL = "https://vwwnpjsmktoyzefpyaxx.supabase.co";
+const PUBLIC_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3d25wanNta3RveXplZnB5YXh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3MzcwOTAsImV4cCI6MjA5OTMxMzA5MH0.TyEgkqsdPmGS26wGzKqJM35zDuGoy55MzuF0zioK_MQ"
+export { PROJECTURL, PUBLIC_ANON_KEY };

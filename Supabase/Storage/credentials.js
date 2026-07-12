@@ -1,0 +1,5 @@
+const PROJECT_URL = "https://hhpgoegsezuzetsuolsv.supabase.co";
+const PROJECT_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhocGdvZWdzZXp1emV0c3VvbHN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4Mjg5NTIsImV4cCI6MjA5OTQwNDk1Mn0.yjov6ynDBaDYuLZFDzij8raqb8zpPIlwqnTgly5JiOo";
+
+const supabase = window.supabase.createClient(PROJECT_URL, PROJECT_KEY);
+export default supabase;

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Uploader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="auth-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="upload-wrapper">
+        <div class="upload-card">
+            <div class="auth-logo">
+                <span class="logo-text">Image<span>Upload</span></span>
+            </div>
+
+            <div class="auth-header">
+                <h1>Upload Images</h1>
+                <p>Drag and drop your images here, or click to browse</p>
+            </div>
+
+            <div id="uploadAlert" class="alert" role="alert"></div>
+
+            <div class="dropzone" id="dropzone">
+                <input type="file" id="fileInput" accept="image/*" multiple hidden />
+                <div class="dropzone-content">
+                    <div class="dropzone-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                    </div>
+                    <p class="dropzone-title">Drop images here</p>
+                    <p class="dropzone-hint">or <span class="dropzone-browse">browse files</span></p>
+                    <p class="dropzone-formats">PNG, JPG, GIF, WEBP — max 5 MB each</p>
+                </div>
+            </div>
+
+            <div class="upload-stats" id="uploadStats" hidden>
+                <span id="fileCount">0 files</span>
+                <button type="button" class="btn-clear" id="clearAll">Clear all</button>
+            </div>
+
+            <div class="preview-grid" id="previewGrid"></div>
+
+            <button type="button" class="btn-primary" id="uploadBtn" disabled>Upload Images</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="upload.js" type="module"></script>
+</body>
+
+</html>
