@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Dashboard</h2>
+    <a href="student.html" class="active">Students</a>
+    <a href="teacher.html">Teachers</a>
+  </div>
+
+  <!-- Main content -->
+  <div class="main">
+    <h1>Students</h1>
+
+    <!-- Form (Create / Update) -->
+    <div class="form-box">
+      <input type="text" id="name" placeholder="Name" />
+      <input type="text" id="rollNo" placeholder="Roll No" />
+      <input type="text" id="className" placeholder="Class" />
+      <button onclick="saveStudent()">Save</button>
+    </div>
+
+    <!-- Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Roll No</th>
+          <th>Class</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="studentTable">
+        <!-- rows JS se aayenge -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Supabase library CDN (module se pehle load hona zaroori hai) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- credentials.js ab student.js ke andar import hota hai, isliye alag line ki zaroorat nahi -->
+  <script type="module" src="student.js"></script>
+</body>
+
+</html>
