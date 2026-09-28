@@ -1,0 +1,42 @@
+{
+  "_canonical": "Real facts only. Verified from the GitHub API for github.com/huzaifa1012 on 2026-09-28 (account, public repository list, per-repo languages and package.json dependencies). Nothing here may be invented. Fields left null are facts Huzaifa Usman has not published yet: fill them in here first, then write them into copy. scripts/sync-brand.mjs mirrors this file to shared/brand/profile.json.",
+  "name": "Huzaifa Usman",
+  "initials": "HU",
+  "handle": "huzaifa1012",
+  "designation": "Software Developer",
+  "tagline": null,
+  "bio": "Software Developer",
+  "location": "Karachi",
+  "about": "Software developer in Karachi. Public work on GitHub since 2021: React and TypeScript front-ends (RichMailer, an email management app on React, TypeScript and Vite; Bag-Store on TanStack Start; Imperial-look-CMS on React and Firebase), Node.js and Express back-ends on MongoDB (soccer-game-backend, MERN-tech-company), and React Native apps (a calculator on Expo with Redux Toolkit, a drawer navigation demo). His portfolio repository describes him as a MERN Stack Developer.",
+  "github": "github.com/huzaifa1012",
+  "photo": null,
+  "stack": ["JavaScript", "TypeScript", "React", "React Native", "Redux Toolkit", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Firebase"],
+  "tags": ["MERN", "Full-Stack", "Web Development"],
+  "projects": [
+    "RichMailer",
+    "Bag-Store",
+    "Huzaifa-Portfolio",
+    "Imperial-look-CMS",
+    "soccer-game-backend",
+    "CRM-dashboard",
+    "Studee-website",
+    "React-Native-Drawer",
+    "Calculator",
+    "Quiz-Application",
+    "ANOPOST-a-social-media-app-",
+    "MERN-tech-company",
+    "Breakaway-web-application",
+    "Attendance-web-app",
+    "PCHAT-app-"
+  ],
+  "footerRight": "Save & Share",
+  "voice": "First person, plain, practical. Written from work actually done, not advice copied from a thread. Short sentences. No hype, no engagement bait, no emoji.",
+  "doNotClaim": [
+    "a seniority title (senior, lead, expert) or any length of experience",
+    "named clients, employers, agencies, revenue or rates",
+    "follower, view, download or user counts",
+    "certifications, degrees or awards",
+    "technologies with no public repository behind them (Next.js, Python, cloud platforms, SQL databases)",
+    "anything about him that is not in this file"
+  ]
+}

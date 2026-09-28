@@ -1,0 +1,15 @@
+{
+  "name": "huzaifa-linkedin-scheduler",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Daily 9 AM Karachi LinkedIn auto-poster for Huzaifa Usman, driven by a Supabase queue",
+  "scripts": {
+    "oauth": "node --env-file=.env scripts/linkedin-oauth.mjs",
+    "enqueue": "node --env-file=.env scripts/enqueue.mjs",
+    "queue": "node --env-file=.env scripts/enqueue.mjs --list"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}

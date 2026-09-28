@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "huzaifa-marketplace",
+  "version": "1.0.0",
+  "description": "Huzaifa Usman's LinkedIn studio: a Claude Code plugin that renders dark blue image stills and short videos scored with local music, in the two LinkedIn feed shapes (square, portrait). Everything renders on the machine.",
+  "owner": {
+    "name": "Huzaifa Usman"
+  },
+  "metadata": {
+    "homepage": "https://github.com/huzaifa1012"
+  },
+  "plugins": [
+    {
+      "name": "huzaifa-studio",
+      "source": "./plugins/studio/huzaifa-studio",
+      "description": "Render a LinkedIn image still (insight/list/stat/quote/showcase) or a short video with music: dark blue on near-black, a dim mesh background, Inter. Square 1080x1080 or portrait 1080x1350 from the same brief. Stills at 4x, video at 2x, all local via Remotion.",
+      "category": "content",
+      "tags": ["image", "video", "music", "remotion", "blue", "linkedin", "mern"],
+      "version": "1.0.0",
+      "author": { "name": "Huzaifa Usman" }
+    }
+  ]
+}

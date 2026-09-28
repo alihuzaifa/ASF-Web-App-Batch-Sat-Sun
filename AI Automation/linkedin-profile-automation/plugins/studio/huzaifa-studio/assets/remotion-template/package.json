@@ -1,0 +1,27 @@
+{
+  "name": "huzaifa-studio-template",
+  "version": "1.0.0",
+  "description": "Huzaifa Usman: LinkedIn studio template, dark blue image stills and short videos with music, rendered locally with Remotion",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "image": "remotion still src/index.ts Image out/image.png --scale=4",
+    "video": "node scripts/render-video.mjs",
+    "validate": "node scripts/validate-props.mjs",
+    "verify": "node scripts/verify.mjs",
+    "brand:sync": "node scripts/sync-brand.mjs",
+    "brand:check": "node scripts/sync-brand.mjs --check",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.200",
+    "@remotion/google-fonts": "^4.0.495",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.200"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "typescript": "^5.5.0"
+  }
+}

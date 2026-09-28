@@ -1,0 +1,8 @@
+{
+  "name": "huzaifa-studio",
+  "version": "1.0.0",
+  "description": "Huzaifa Usman's LinkedIn studio: render dark blue image stills (insight/list/stat/quote/showcase) and short videos scored with music, locally via Remotion. Square or portrait from one brief. Ultra-HD stills at 4x.",
+  "author": { "name": "Huzaifa Usman" },
+  "license": "MIT",
+  "keywords": ["image", "video", "music", "remotion", "blue", "linkedin", "personal-brand"]
+}
