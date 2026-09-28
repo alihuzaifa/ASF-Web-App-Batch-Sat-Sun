@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Huzaifa Usman: studio props",
+  "description": "What /image and /video may pass at render time. scripts/validate-props.mjs enforces the parts a JSON schema cannot: that keyPhrase is really inside the headline, and that the copy does not claim anything brand.profile.json lists under doNotClaim.",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "enum": ["insight", "list", "stat", "quote", "showcase"],
+      "description": "Which card. Only the image uses this."
+    },
+    "format": {
+      "enum": ["square", "portrait"],
+      "description": "LinkedIn feed: square 1080x1080 · portrait 1080x1350"
+    },
+    "eyebrow": { "type": "string", "maxLength": 28 },
+    "headline": { "type": "string", "maxLength": 110 },
+    "keyPhrase": { "type": "string", "description": "A substring of headline, painted in the brand gradient." },
+    "subhead": { "type": "string", "maxLength": 140 },
+    "subheadAccent": { "type": "string" },
+    "body": { "type": "string", "maxLength": 460 },
+    "points": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 84 },
+      "minItems": 2,
+      "maxItems": 5,
+      "description": "3-5 for the list card, 2-4 for the video."
+    },
+    "stat": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string", "maxLength": 8 },
+        "label": { "type": "string", "maxLength": 90 }
+      },
+      "required": ["value", "label"]
+    },
+    "quote": { "type": "string", "maxLength": 220 },
+    "showcase": {
+      "type": "object",
+      "properties": {
+        "project": { "type": "string", "description": "A repository that is really his — see projects in brand.profile.json." },
+        "what": { "type": "string", "maxLength": 120 },
+        "built": { "type": "string", "maxLength": 120 },
+        "learned": { "type": "string", "maxLength": 140 }
+      },
+      "required": ["project", "what", "built", "learned"]
+    },
+    "footerTags": { "type": "array", "items": { "type": "string", "maxLength": 24 }, "maxItems": 3 },
+    "closingLine": { "type": "string", "maxLength": 90, "description": "Video only — the line the closing card ends on." },
+    "hold": {
+      "type": "object",
+      "description": "Video only — seconds each scene holds.",
+      "properties": {
+        "intro": { "type": "number", "minimum": 1.5 },
+        "point": { "type": "number", "minimum": 1.5 },
+        "outro": { "type": "number", "minimum": 1.5 }
+      }
+    }
+  },
+  "additionalProperties": false
+}

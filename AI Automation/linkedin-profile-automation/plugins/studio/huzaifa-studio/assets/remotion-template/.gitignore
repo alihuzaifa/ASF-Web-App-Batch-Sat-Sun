@@ -1,0 +1,9 @@
+node_modules/
+out/
+.remotion/
+public/audio/*
+!public/audio/README.md
+public/art/*
+!public/art/README.md
+props.json
+video.props.json
