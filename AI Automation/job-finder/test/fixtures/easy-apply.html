@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>React Developer | Acme | LinkedIn (test copy)</title>
+<style>
+  [role=dialog] { border: 1px solid #999; padding: 12px; margin: 12px; }
+  .artdeco-inline-feedback--error { color: red; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<!--
+  A small stand-in for a logged-in LinkedIn job page with an Easy Apply form, built from the markup the
+  filler targets (button.jobs-apply-button, role=dialog, aria-label buttons, fieldset/legend radios,
+  .artdeco-inline-feedback--error). Query flags: ?applied=1, ?external=1, ?unknown=1, ?nocover=1, ?extra=1 (one more question).
+  Submitting POSTs every field to /submit so the test can check exactly what was sent.
+-->
+<h1>React Developer</h1>
+<div id="top"></div>
+<div id="dialog-root"></div>
+<script>
+const q = new URLSearchParams(location.search);
+const topEl = document.getElementById("top");
+if (q.get("applied")) topEl.innerHTML = '<span class="artdeco-inline-feedback">Applied 2 days ago</span>';
+else if (q.get("external")) topEl.innerHTML = '<a class="jobs-apply-button" href="https://careers.acme.example/apply/1" aria-label="Apply to React Developer on company website">Apply</a>';
+else topEl.innerHTML = '<button class="jobs-apply-button" aria-label="Easy Apply to React Developer at Acme">Easy Apply</button>';
+
+const steps = [
+  `<h3>Contact info</h3>
+   <label for="fn">First name</label><input id="fn" type="text" value="Test">
+   <label for="ph">Mobile phone number</label><input id="ph" type="text" required>
+   <div class="err-slot"></div>
+   <button aria-label="Continue to next step">Next</button>`,
+  `<h3>Resume</h3><p>Upload your resume (PDF)</p>
+   <input id="cv" type="file" accept=".pdf">
+   <button aria-label="Continue to next step">Next</button>`,
+  `<h3>Additional questions</h3>
+   <label for="yrs">How many years of experience do you have with React?</label><input id="yrs" type="text" required>
+   <fieldset><legend>Are you legally authorized to work in Pakistan?</legend>
+     <input type="radio" name="auth" id="auth-y" value="Yes"><label for="auth-y">Yes</label>
+     <input type="radio" name="auth" id="auth-n" value="No"><label for="auth-n">No</label></fieldset>
+   <label for="five">Do you have at least 5 years of experience with React?</label>
+   <select id="five" required><option>Select an option</option><option>Yes</option><option>No</option></select>
+   ${q.get("nocover") ? "" : '<label for="cl">Cover letter</label><textarea id="cl"></textarea>'}
+   ${q.get("extra") ? '<label for="np">What is your notice period?</label><input id="np" type="text" required>' : ""}
+   ${q.get("unknown") ? `<fieldset><legend>Do you have an active security clearance?</legend>
+     <input type="radio" name="sec" id="sec-y"><label for="sec-y">Yes</label>
+     <input type="radio" name="sec" id="sec-n"><label for="sec-n">No</label></fieldset>` : ""}
+   <button aria-label="Review your application">Review</button>`,
+  `<h3>Review your application</h3>
+   <input type="checkbox" id="follow-company-checkbox" checked><label for="follow-company-checkbox">Follow Acme</label>
+   <button aria-label="Submit application">Submit application</button>`,
+];
+
+const values = {};
+let step = 0;
+function render() {
+  const root = document.getElementById("dialog-root");
+  root.innerHTML = `<div role="dialog"><button aria-label="Dismiss">X</button><form onsubmit="return false">${steps[step]}</form></div>`;
+  root.querySelectorAll("button[aria-label='Continue to next step'], button[aria-label='Review your application']").forEach((b) =>
+    b.addEventListener("click", next));
+  root.querySelector("button[aria-label='Submit application']")?.addEventListener("click", submit);
+  root.querySelector("button[aria-label='Dismiss']").addEventListener("click", () => {
+    root.insertAdjacentHTML("beforeend", '<div role="alertdialog"><button data-control-name="discard_application_confirm_btn">Discard</button></div>');
+    root.querySelector("[data-control-name=discard_application_confirm_btn]").addEventListener("click", () => {
+      root.innerHTML = ""; fetch("/discard", { method: "POST" });
+    });
+  });
+}
+function collect() {
+  const d = document.querySelector("[role=dialog]");
+  d.querySelectorAll("input[type=text], textarea").forEach((i) => (values[i.id] = i.value));
+  d.querySelectorAll("select").forEach((s) => (values[s.id] = s.value));
+  d.querySelectorAll("input[type=radio]:checked").forEach((r) => (values[r.name] = r.id));
+  d.querySelectorAll("input[type=file]").forEach((f) => (values[f.id] = f.files[0]?.name ?? ""));
+  d.querySelectorAll("input[type=checkbox]").forEach((c) => (values[c.id] = c.checked));
+}
+function next() {
+  collect();
+  const d = document.querySelector("[role=dialog]");
+  const missing = [...d.querySelectorAll("[required]")].find((i) => !i.value || i.value === "Select an option");
+  if (missing) {
+    d.querySelector(".err-slot, form").insertAdjacentHTML("beforeend", '<div class="artdeco-inline-feedback--error">Please enter a valid answer</div>');
+    return;
+  }
+  step++;
+  render();
+}
+function submit() {
+  collect();
+  fetch("/submit", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(values) }).then(() => {
+    document.getElementById("dialog-root").innerHTML = '<div role="dialog"><h2>Your application was sent to Acme!</h2></div>';
+  });
+}
+document.querySelector("button.jobs-apply-button")?.addEventListener("click", () => { step = 0; render(); });
+</script>
+</body>
+</html>

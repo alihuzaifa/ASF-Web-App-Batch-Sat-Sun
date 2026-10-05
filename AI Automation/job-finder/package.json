@@ -1,0 +1,38 @@
+{
+  "name": "job-finder",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/cli.ts",
+    "ui": "tsx src/ui/server.ts",
+    "login": "tsx src/login.ts",
+    "search:preview": "tsx src/search/preview.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test --test-concurrency=1 test/*.test.ts",
+    "fixtures:capture": "tsx scripts/capture-fixtures.ts",
+    "install-skills": "tsx scripts/install-skills.ts",
+    "doctor": "tsx src/doctor.ts",
+    "test:live": "tsx --test --test-concurrency=1 test-live/*.test.ts",
+    "replies": "tsx src/replies-cli.ts",
+    "examples:linkedin": "tsx scripts/linkedin-examples.ts"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "imapflow": "^2.2.1",
+    "mailparser": "^3.9.33",
+    "nodemailer": "^10.0.13",
+    "playwright": "^1.63.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/mailparser": "^3.9.0",
+    "@types/node": "^26.6.3",
+    "@types/nodemailer": "^8.0.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

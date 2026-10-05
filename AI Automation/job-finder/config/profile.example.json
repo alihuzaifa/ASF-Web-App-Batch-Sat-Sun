@@ -1,0 +1,96 @@
+{
+  "me": {
+    "name": "Your Name",
+    "email": "your.email@gmail.com",
+    "phone": "+92 300 0000000",
+    "location": "Lahore, Pakistan",
+    "linkedin": "https://www.linkedin.com/in/your-handle",
+    "github": "https://github.com/your-handle",
+    "website": ""
+  },
+  "search": {
+    "sources": {
+      "linkedin": true,
+      "rozee": true
+    },
+    "keywords": [
+      "React Developer",
+      "Full Stack Developer",
+      "Next.js Developer",
+      "React Native Developer"
+    ],
+    "locations": [
+      "Pakistan"
+    ],
+    "posted_within_days": 7,
+    "remote_only": false,
+    "easy_apply_only": false,
+    "max_jobs_per_run": 20,
+    "web_queries": [
+      "React developer job Pakistan send CV email"
+    ]
+  },
+  "match": {
+    "what_i_want": "Frontend or full stack developer role using React / Next.js / Node.js. On-site in my city, hybrid, or remote.",
+    "must_have": [
+      "paid, full-time or contract role"
+    ],
+    "deal_breakers": [
+      "unpaid internship",
+      "commission-only pay",
+      "asks for a fee to apply or for training",
+      "needs 8+ years of experience"
+    ],
+    "min_score": 65
+  },
+  "apply": {
+    "linkedin_auto": false,
+    "auto_min_score": 80,
+    "max_per_day": 5,
+    "gmail_drafts": true,
+    "follow_up_days": 7
+  },
+  "notify": {
+    "check_replies": true,
+    "summary_email": true
+  },
+  "answers": {
+    "years_of_experience": 3,
+    "skill_years": {
+      "react": 3,
+      "javascript": 3,
+      "typescript": 2,
+      "node": 2,
+      "next.js": 2
+    },
+    "notice_period": "2 weeks",
+    "expected_salary": "",
+    "current_salary": "",
+    "questions": [
+      {
+        "match": "legally authori[sz]ed to work in pakistan",
+        "answer": "Yes"
+      },
+      {
+        "match": "require.*sponsorship|need.*visa",
+        "answer": "No"
+      },
+      {
+        "match": "comfortable (working|commuting) (on-?site|from office|in office)",
+        "answer": "Yes"
+      },
+      {
+        "match": "remote",
+        "answer": "Yes"
+      },
+      {
+        "match": "bachelor",
+        "answer": "Yes"
+      },
+      {
+        "match": "english.*(proficien|level|fluent)",
+        "answer": "Professional"
+      }
+    ]
+  }
+}
