@@ -1,0 +1,6 @@
+{
+  "name": "brag-studio",
+  "version": "1.0.0",
+  "description": "Make launch pictures, a short brag video and a long tour video for a project, then schedule them with Buffer.",
+  "author": { "name": "Ali Huzaifa" }
+}

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brag Studio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">Brag Studio</div>
+    <nav id="tabs">
+      <a href="#connect">1. Connect</a>
+      <a href="#project">2. Project</a>
+      <a href="#make">3. Make</a>
+      <a href="#post">4. Post</a>
+    </nav>
+    <label class="current">Project
+      <select id="current"></select>
+    </label>
+  </header>
+
+  <main>
+    <!-- ───────────── Connect ───────────── -->
+    <section id="connect" class="tab">
+      <h1>Connect your accounts</h1>
+      <p class="lead">Do this once. The keys stay on this computer, in a file called <code>.env.local</code>. Never send that file to anyone.</p>
+      <div id="connect-status" class="status-row"></div>
+
+      <div class="card">
+        <h2>Buffer <span class="hint">posts for you on Instagram, Facebook, TikTok, YouTube, LinkedIn and X</span></h2>
+        <ol class="steps">
+          <li>Open <a href="https://publish.buffer.com/settings/api" target="_blank" rel="noopener">publish.buffer.com/settings/api</a> and log in.</li>
+          <li>Click <b>New key</b>, give it any name, copy it.</li>
+          <li>Paste it here.</li>
+        </ol>
+        <label>Buffer key <input id="buffer-key" type="password" autocomplete="off" placeholder="paste the key"></label>
+      </div>
+
+      <div class="card">
+        <h2>Cloudflare Pages <span class="hint">keeps your pictures and videos online so Buffer can fetch them</span></h2>
+        <ol class="steps">
+          <li>Open <a href="https://dash.cloudflare.com" target="_blank" rel="noopener">dash.cloudflare.com</a> (a free account is enough, no card).</li>
+          <li><b>Account ID</b>: on the home page, click the three dots next to your account name and pick <b>Copy account ID</b>.</li>
+          <li><b>Token</b>: your picture (top right) → <b>My Profile</b> → <b>API Tokens</b> → <b>Create Token</b> → <b>Custom token</b>.
+            Permission: <b>Account</b> · <b>Cloudflare Pages</b> · <b>Edit</b>. Nothing else. Create it and copy it.</li>
+        </ol>
+        <label>Account ID <input id="cf-account" autocomplete="off" placeholder="32 letters and numbers"></label>
+        <label>Token <input id="cf-token" type="password" autocomplete="off" placeholder="paste the token"></label>
+        <label>Name for the media site <input id="cf-project" autocomplete="off" placeholder="brag-media"></label>
+      </div>
+
+      <button id="connect-save" class="primary">Check and save</button>
+      <div id="connect-msg" class="msg"></div>
+
+      <div id="channels" class="card hidden">
+        <h2>Where it can post</h2>
+        <p class="hint">These are the accounts connected in Buffer. To add one, connect it in Buffer, then press Check again.</p>
+        <ul id="channel-list" class="channel-list"></ul>
+        <button id="channels-refresh">Check again</button>
+      </div>
+    </section>
+
+    <!-- ───────────── Project ───────────── -->
+    <section id="project" class="tab">
+      <h1>Your project</h1>
+      <div class="card">
+        <h2>Start from a link</h2>
+        <p class="hint">The app opens the website, takes pictures of its pages and fills in the answers below. You then fix anything that is wrong.</p>
+        <label>Website link <input id="read-website" placeholder="https://your-project.com"></label>
+        <label>GitHub link <span class="hint">(optional, helps it find what the project does)</span> <input id="read-github" placeholder="https://github.com/you/project"></label>
+        <button id="read-go" class="primary">Read my project</button>
+        <div id="read-job" class="job hidden"></div>
+      </div>
+
+      <div id="editor" class="hidden">
+        <div class="card">
+          <h2>A few questions</h2>
+          <label>1. What is it called? <input id="f-name" maxlength="40"></label>
+          <label>2. What does it do, in one line? <input id="f-oneLine" maxlength="140"></label>
+          <label>3. Who is it for? <span class="hint">(for example: small shop owners)</span> <input id="f-forWho" maxlength="60"></label>
+          <label>4. First words of the video <span class="hint">(say it like you would to a friend)</span> <input id="f-hook" maxlength="60" placeholder="I built this."></label>
+          <fieldset>
+            <legend>5. What can it do? <span class="hint">One thing per line, short. Three is best.</span></legend>
+            <input class="f-feature" maxlength="80">
+            <input class="f-feature" maxlength="80">
+            <input class="f-feature" maxlength="80">
+            <input class="f-feature" maxlength="80">
+          </fieldset>
+          <label>6. Your name or handle <span class="hint">(shown at the end)</span> <input id="f-handle" maxlength="50" placeholder="@yourname"></label>
+          <label>7. Website link <input id="f-website"></label>
+          <label class="inline">8. Main colour <input id="f-accent" type="color"></label>
+          <div id="f-warn" class="warn hidden"></div>
+          <div class="row">
+            <button id="f-save" class="primary">Save answers</button>
+            <button id="f-polish" class="hidden">Improve the words with Claude</button>
+            <button id="f-forget" class="danger">Forget this project</button>
+          </div>
+          <div id="f-msg" class="msg"></div>
+        </div>
+        <div class="card">
+          <h2>Pages to show</h2>
+          <p class="hint">Untick a page to leave it out. You can rename it too.</p>
+          <div id="f-pages" class="pages"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Make ───────────── -->
+    <section id="make" class="tab">
+      <h1>Make pictures and videos</h1>
+      <p id="make-none" class="warn hidden">Read a project on the Project tab first.</p>
+      <div id="make-cards" class="grid3">
+        <div class="card">
+          <h2>Picture</h2>
+          <label>What to show
+            <select id="m-post">
+              <option value="launch">Launch: name, one line and the site</option>
+              <option value="feature">One thing it does</option>
+              <option value="list">Everything it does</option>
+            </select>
+          </label>
+          <label id="m-feature-wrap" class="hidden">Which one <select id="m-feature"></select></label>
+          <label>Shape
+            <select id="m-pic-shape">
+              <option value="square">Square (all feeds)</option>
+              <option value="portrait">Portrait 4:5 (Instagram, Facebook)</option>
+              <option value="story">Tall 9:16 (stories)</option>
+            </select>
+          </label>
+          <button class="primary" data-make="picture">Make picture</button>
+        </div>
+        <div class="card">
+          <h2>Short video <span class="hint">about 25 seconds, with music</span></h2>
+          <p class="hint">The brag video: your hook, the name, what it does, a fast run through the pages, then the link.</p>
+          <label>Shape
+            <select id="m-short-shape">
+              <option value="story">Tall 9:16 (Reels, TikTok, Shorts)</option>
+              <option value="square">Square (feeds)</option>
+            </select>
+          </label>
+          <button class="primary" data-make="short">Make short video</button>
+        </div>
+        <div class="card">
+          <h2>Long video <span class="hint">a full tour, with calm music</span></h2>
+          <p class="hint">Every page scrolled from top to bottom. <span id="m-long-length"></span></p>
+          <label>Shape
+            <select id="m-long-shape">
+              <option value="wide">Wide 16:9 (YouTube, LinkedIn, Facebook)</option>
+              <option value="story">Tall 9:16 (Reels, TikTok)</option>
+            </select>
+          </label>
+          <label>Your own screen recording <span class="hint">(optional, under 4 minutes, plays after the intro)</span>
+            <input id="m-recording" type="file" accept="video/mp4,video/webm,video/quicktime">
+          </label>
+          <div id="m-recording-now" class="hint"></div>
+          <button class="primary" data-make="long">Make long video</button>
+        </div>
+      </div>
+      <div id="make-job" class="job hidden"></div>
+      <div id="make-result" class="result hidden"></div>
+    </section>
+
+    <!-- ───────────── Post ───────────── -->
+    <section id="post" class="tab">
+      <h1>Post</h1>
+      <p class="hint">Click a picture or video to schedule it.</p>
+      <div id="library" class="library"></div>
+      <div class="card">
+        <div class="row between">
+          <h2>Scheduled posts</h2>
+          <button id="posts-refresh">Check status</button>
+        </div>
+        <table id="posts"><thead><tr><th>When</th><th>Where</th><th>File</th><th>Status</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+  </main>
+
+  <!-- schedule drawer -->
+  <aside id="drawer" class="drawer hidden" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="row between"><h2 id="d-title">Schedule</h2><button id="d-close" aria-label="Close">✕</button></div>
+      <div id="d-preview" class="preview"></div>
+      <label>Words under the post <textarea id="d-caption" rows="9"></textarea></label>
+      <fieldset>
+        <legend>Where</legend>
+        <div id="d-channels" class="checks"></div>
+      </fieldset>
+      <fieldset>
+        <legend>When</legend>
+        <label class="inline"><input type="radio" name="d-when" value="time" checked> At this time</label>
+        <input id="d-time" type="datetime-local">
+        <label class="inline"><input type="radio" name="d-when" value="queue"> Next free slot in my Buffer queue</label>
+      </fieldset>
+      <div class="row">
+        <button id="d-go" class="primary">Schedule</button>
+        <button id="d-delete" class="danger">Delete this file</button>
+      </div>
+      <div id="d-job" class="job hidden"></div>
+    </div>
+  </aside>
+
+  <script src="/app.js"></script>
+</body>
+</html>
