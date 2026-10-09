@@ -26,7 +26,9 @@ The first time it gets everything ready (a few minutes). If Node is missing it
 installs it and asks you to double-click Start again. Then your browser opens
 the app. Keep the black window open while you use it; close it to stop.
 
-**2. Connect tab: paste your two keys.** The page shows the steps:
+**2. Connect tab: paste your two keys.** Every click, step by step:
+**[HOW-TO-GET-KEYS.md](HOW-TO-GET-KEYS.md)**, or watch the 79-second video
+**[docs/how-to-get-keys.mp4](docs/how-to-get-keys.mp4)** (it also plays on the Connect tab). In short:
 
 | key | where |
 |---|---|
@@ -104,6 +106,7 @@ output/                (gitignored) the finished pictures and videos
 npm test          # what goes where, file size budget, captions, music
 npm run typecheck
 npm run studio    # Remotion Studio, to work on the templates
+node scripts/make-guide-video.mjs   # re-render docs/how-to-get-keys.mp4 after changing video/Guide.tsx
 ```
 
 As a Claude Code plugin:
