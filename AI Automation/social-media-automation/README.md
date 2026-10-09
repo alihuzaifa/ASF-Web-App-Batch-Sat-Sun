@@ -26,11 +26,13 @@ The first time it gets everything ready (a few minutes). If Node is missing it
 installs it and asks you to double-click Start again. Then your browser opens
 the app. Keep the black window open while you use it; close it to stop.
 
-**2. Connect tab: paste your two keys.** The page shows the steps:
+**2. Connect tab: paste your two keys.** Every click, step by step:
+**[HOW-TO-GET-KEYS.md](HOW-TO-GET-KEYS.md)**, or watch the 2-minute video (real screens, every click highlighted)
+**[docs/how-to-get-keys.mp4](docs/how-to-get-keys.mp4)** (it also plays on the Connect tab). In short:
 
 | key | where |
 |---|---|
-| Buffer API key | Connect your accounts in Buffer first, then [publish.buffer.com/settings/api](https://publish.buffer.com/settings/api) → New key |
+| Buffer API key | Verify your email and connect your accounts in Buffer, then Settings → API → New Key → Expiration **1 year** → Generate API Key |
 | Cloudflare token | Free account at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up) → My Profile → API Tokens → Create Custom Token → **Account · Cloudflare Pages · Edit** |
 
 Press **Check and save**. It tests both keys, finds your Cloudflare account,
@@ -104,6 +106,7 @@ output/                (gitignored) the finished pictures and videos
 npm test          # what goes where, file size budget, captions, music
 npm run typecheck
 npm run studio    # Remotion Studio, to work on the templates
+node scripts/make-keys-video.mjs    # re-render docs/how-to-get-keys.mp4 from docs/walkthrough/
 ```
 
 As a Claude Code plugin:

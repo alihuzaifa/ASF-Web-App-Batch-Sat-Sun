@@ -8,7 +8,7 @@ import { spawn } from "node:child_process"
 import { pipeline } from "node:stream/promises"
 import path from "node:path"
 import { getVideoMetadata } from "@remotion/renderer"
-import { BASE, DATA, MUSIC, OUTPUT, PORT, PROJECTS, UI } from "./lib/paths.mjs"
+import { BASE, DATA, MUSIC, OUTPUT, PORT, PROJECTS, ROOT, UI } from "./lib/paths.mjs"
 import { loadEnv, masked, saveEnv } from "./lib/env.mjs"
 import { readJson, slugify, writeJson } from "./lib/store.mjs"
 import * as buffer from "./lib/buffer.mjs"
@@ -298,6 +298,7 @@ const server = http.createServer(async (req, res) => {
   try {
     if (url.pathname === "/" || url.pathname === "/index.html") return serveFile(req, res, UI, "index.html")
     if (/^\/(app\.js|style\.css)$/.test(url.pathname)) return serveFile(req, res, UI, url.pathname.slice(1))
+    if (url.pathname === "/docs/how-to-get-keys.mp4") return serveFile(req, res, path.join(ROOT, "docs"), "how-to-get-keys.mp4")
     if (url.pathname.startsWith("/files/projects/")) return serveFile(req, res, PROJECTS, url.pathname.slice(16))
     if (url.pathname.startsWith("/files/music/")) return serveFile(req, res, MUSIC, url.pathname.slice(13))
     if (url.pathname.startsWith("/files/output/")) return serveFile(req, res, OUTPUT, url.pathname.slice(14))

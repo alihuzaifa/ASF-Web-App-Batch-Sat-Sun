@@ -1,0 +1,181 @@
+[
+  {
+    "kind": "title",
+    "title": "Two keys. Five minutes.",
+    "sub": "Where to get what Social Media Automation asks for",
+    "secs": 4
+  },
+  {
+    "kind": "section",
+    "label": "Key 1 of 2",
+    "title": "Buffer API key",
+    "sub": "Buffer is what posts to Instagram, Facebook, TikTok, YouTube, LinkedIn and X",
+    "secs": 4
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-1-signup",
+    "n": "1",
+    "title": "Make a free Buffer account at buffer.com",
+    "note": "Then open the email Buffer sends you and verify it. The API page stays locked until you do.",
+    "secs": 5.5
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-2-channels",
+    "n": "2",
+    "title": "Settings → Channels → Connect Channel",
+    "secs": 4.5
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-3-pick",
+    "n": "3",
+    "title": "Pick where to post and log in there",
+    "note": "Instagram: use a Business or Creator account, so posts go out by themselves. Free plan: 3 channels.",
+    "secs": 6
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-4-api",
+    "n": "4",
+    "title": "Settings → API",
+    "secs": 4.5
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-5-new",
+    "n": "5",
+    "title": "New Key",
+    "secs": 4
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-6-name",
+    "n": "6",
+    "title": "Give it any name",
+    "secs": 4
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-7-expiry",
+    "n": "7",
+    "title": "Expiration: pick 1 year",
+    "note": "The key stops working when it expires. After a year, make a new one and paste it again. Leave every permission ticked.",
+    "secs": 6.5
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-8-generate",
+    "n": "8",
+    "title": "Generate API Key",
+    "secs": 4
+  },
+  {
+    "kind": "shot",
+    "shot": "bf-9-copy",
+    "n": "9",
+    "title": "Copy the key",
+    "note": "Hidden here. It is a password: never send it to anyone, never put it on GitHub.",
+    "secs": 5.5
+  },
+  {
+    "kind": "shot",
+    "shot": "app-1-buffer",
+    "n": "10",
+    "title": "Paste it in the app: Connect tab → Buffer key",
+    "secs": 4.5
+  },
+  {
+    "kind": "section",
+    "label": "Key 2 of 2",
+    "title": "Cloudflare token",
+    "sub": "Cloudflare keeps your pictures and videos online so Buffer can fetch them. Free, no card.",
+    "secs": 4.5
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-1-signup",
+    "n": "1",
+    "title": "Make a free account at dash.cloudflare.com",
+    "secs": 4.5
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-2-menu",
+    "n": "2",
+    "title": "Your picture (top right) → Profile",
+    "secs": 4.5
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-3-tokens",
+    "n": "3",
+    "title": "API Tokens → Create Token",
+    "secs": 4.5
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-4-custom",
+    "n": "4",
+    "title": "Create Custom Token → Get started",
+    "secs": 4.5
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-5-name",
+    "n": "5",
+    "title": "Give it any name",
+    "secs": 4
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-6-permission",
+    "n": "6",
+    "title": "Permissions: Account · Cloudflare Pages · Edit",
+    "note": "Add nothing else. Leave Account Resources on All accounts.",
+    "secs": 6
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-7-continue",
+    "n": "7",
+    "title": "Continue to summary",
+    "secs": 4
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-8-create",
+    "n": "8",
+    "title": "Create Token",
+    "secs": 4
+  },
+  {
+    "kind": "shot",
+    "shot": "cf-9-copy",
+    "n": "9",
+    "title": "Copy the token now",
+    "note": "Hidden here. Cloudflare shows it only once. Lost it? Make a new one.",
+    "secs": 5.5
+  },
+  {
+    "kind": "shot",
+    "shot": "app-2-cloudflare",
+    "n": "10",
+    "title": "Paste it in the app, then Check and save",
+    "secs": 5
+  },
+  {
+    "kind": "section",
+    "label": "Keep them safe",
+    "title": "Your keys are passwords",
+    "sub": "They stay in .env.local on your computer. Never send that file to anyone, never put it on GitHub.",
+    "secs": 5.5
+  },
+  {
+    "kind": "title",
+    "title": "That's it.",
+    "sub": "Next: Project tab, paste your website, then Make and schedule a week.",
+    "secs": 4.5
+  }
+]
