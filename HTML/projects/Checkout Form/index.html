@@ -196,16 +196,29 @@
             <h2>Delivery details</h2>
 
             <!-- Hidden settings for FormSubmit -->
-            <input type="hidden" name="_subject" value="New order from My Shop">
+            <input type="hidden" name="_subject" value="New order #MS-1024 - Rs 22,500">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
 
-            <!-- Hidden order details, so the email says what was bought -->
-            <input type="hidden" name="Items" value="White Heels x1, Game Controller x1, Film Camera x1">
-            <input type="hidden" name="Total" value="Rs 22,500">
+            <!--
+                The order as a receipt. FormSubmit shows values in a fixed-width
+                font, so lining the columns up with spaces makes a neat bill.
+                Keep it at the start of the line: spaces here end up in the email.
+            -->
+            <textarea name="Order" hidden>
+ORDER #MS-1024
+------------------------------------
+Item                 Qty      Price
+------------------------------------
+White Heels            1   Rs  4,500
+Game Controller        1   Rs  6,000
+Film Camera            1   Rs 12,000
+------------------------------------
+Delivery                        FREE
+TOTAL                      Rs 22,500</textarea>
 
             <label for="name">Full name</label>
-            <input type="text" id="name" name="Name" placeholder="Ali Khan" required>
+            <input type="text" id="name" name="Customer" placeholder="Ali Khan" required>
 
             <div class="row">
                 <div>
