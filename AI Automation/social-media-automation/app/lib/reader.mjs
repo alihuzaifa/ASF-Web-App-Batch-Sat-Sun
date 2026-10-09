@@ -71,7 +71,7 @@ export const featuresFromReadme = (md) => {
 const readGithub = async (url) => {
   const g = parseGithub(url)
   if (!g) return null
-  const headers = { "User-Agent": "brag-studio", Accept: "application/vnd.github+json" }
+  const headers = { "User-Agent": "social-media-automation", Accept: "application/vnd.github+json" }
   const repo = await fetch(`https://api.github.com/repos/${g.owner}/${g.repo}`, { headers }).then((r) => (r.ok ? r.json() : null))
   if (!repo) throw new Error("Could not open that GitHub link. Is the repo public?")
   const readme = await fetch(`https://api.github.com/repos/${g.owner}/${g.repo}/readme`, {

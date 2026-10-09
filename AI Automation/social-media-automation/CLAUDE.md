@@ -1,8 +1,10 @@
-# Brag Studio: rules for this folder
+# Social Media Automation: rules for this folder
 
-A local app (Start.cmd → http://localhost:4545) that reads a project's website,
-makes pictures, a short brag video and a long tour video with Remotion, and
-schedules them with Buffer. Media is hosted on Cloudflare Pages.
+For students. A local app (Start.cmd → http://localhost:4545) that reads a project's website,
+makes pictures, a short launch video and a long tour video with Remotion, and
+schedules them with Buffer. Media is hosted on Cloudflare Pages. The student
+gives only a Buffer API key and a Cloudflare token; the account ID is looked up
+from the token.
 
 ## Who uses it
 
@@ -13,12 +15,13 @@ and says what to do next. Nothing should need a terminal command.
 
 Copy only says what the person typed into the Project tab, or what the code in
 the repo supports. No invented users, numbers, customers or awards. The Claude
-"improve" button and the `/brag` command follow the same rule.
+"improve" button and the `/social` command follow the same rule.
 
 ## Posting
 
-- **Nothing is scheduled without the person pressing Schedule.** Do not call
-  `/api/schedule` or Buffer's `createPost` on their behalf, and do not run
+- **Nothing is scheduled without the person pressing Schedule or "Make and
+  schedule a week".** Do not call `/api/schedule`, `/api/autopilot` or Buffer's
+  `createPost` on their behalf, and do not run
   `wrangler pages deploy` outside the app's own flow.
 - Every deploy is a full snapshot. `filesToKeep` decides what stays online. If
   you change it, a waiting post must never lose its file.

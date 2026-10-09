@@ -1,11 +1,11 @@
 ---
-description: Open Brag Studio for this project. Reads the website, fills the answers from the code here, and leaves the person in the app to make and schedule posts.
+description: Open Social Media Automation for this project. Reads the website, fills the answers from the code here, and leaves the person in the app to make and schedule posts.
 argument-hint: "[website link]"
 ---
 
-# /brag
+# /social
 
-Brag Studio is a local app. The person uses it in the browser; this command only
+Social Media Automation is a local app. The person uses it in the browser; this command only
 gets them there with the answers already filled in.
 
 The app lives in `${CLAUDE_PLUGIN_ROOT}/..` (the folder with `Start.cmd`).

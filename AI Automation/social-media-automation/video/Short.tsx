@@ -3,7 +3,7 @@ import { AbsoluteFill, Audio, Easing, Sequence, interpolate, spring, useCurrentF
 import { Background, BrowserFrame, Chip, INK, MUTED, PhoneFrame, WordsIn, fontFamily, hostOf, useEdges } from "./parts"
 import { FPS, type Props } from "./types"
 
-// The brag video: hook, name, what it does, a fast montage of the pages, then
+// The launch video: hook, name, what it does, a fast montage of the pages, then
 // the link. Every scene length is a whole number of beats, so the cuts land on
 // the music.
 

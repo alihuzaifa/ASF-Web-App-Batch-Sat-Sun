@@ -1,4 +1,4 @@
-// Brag Studio page. Plain JS, no build step.
+// Social Media Automation page. Plain JS, no build step.
 
 const $ = (s) => document.querySelector(s)
 const $$ = (s) => [...document.querySelectorAll(s)]
@@ -7,7 +7,7 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 let state = { connected: {}, channels: [], projects: [], library: [], posts: [], claude: false }
 let current = null
 try {
-  current = localStorage.getItem("brag.current")
+  current = localStorage.getItem("sma.current")
 } catch {}
 
 const call = async (url, data) => {
@@ -98,7 +98,7 @@ const renderPicker = () => {
 $("#current").addEventListener("change", (e) => {
   current = e.target.value
   try {
-    localStorage.setItem("brag.current", current)
+    localStorage.setItem("sma.current", current)
   } catch {}
   render()
 })
@@ -168,7 +168,7 @@ $("#read-go").addEventListener("click", (e) =>
       const brief = await follow(job, box)
       current = brief.slug
       try {
-        localStorage.setItem("brag.current", current)
+        localStorage.setItem("sma.current", current)
       } catch {}
       await load()
     } catch {}
@@ -263,11 +263,26 @@ const longSeconds = (p, shape) => {
   return Math.round(s)
 }
 
+const channelBoxes = (el, isVideo = true) => {
+  const kept = new Set($$(`#${el.id} input:checked`).map((x) => x.value))
+  el.innerHTML = state.channels.length
+    ? state.channels
+        .map((c) => {
+          const no = c.service === "youtube" && !isVideo ? "YouTube only takes video" : ""
+          return `<label class="inline"><input type="checkbox" value="${esc(c.id)}" ${no ? "disabled" : ""} ${kept.has(c.id) ? "checked" : ""}> <span class="svc">${esc(c.service)}</span> ${esc(c.displayName || c.name)} ${no ? `<span class="hint">(${no})</span>` : ""}</label>`
+        })
+        .join("")
+    : `<p class="warn">Connect Buffer first (Connect tab).</p>`
+}
+
 const renderMake = () => {
   const p = project()
   $("#make-none").classList.toggle("hidden", !!p)
   $("#make-cards").classList.toggle("hidden", !p)
+  $("#auto").classList.toggle("hidden", !p)
   if (!p) return
+  channelBoxes($("#a-channels"))
+  if (!$("#a-date").value) $("#a-date").value = tomorrowAt10().slice(0, 10)
   $("#m-feature").innerHTML = p.features
     .filter(Boolean)
     .map((f, i) => `<option value="${i}">${esc(f)}</option>`)
@@ -329,6 +344,27 @@ $$("[data-make]").forEach((btn) =>
   ),
 )
 
+$("#a-go").addEventListener("click", (e) =>
+  busy(e.target, async () => {
+    const box = $("#a-job")
+    box.textContent = ""
+    try {
+      const { job } = await call("/api/autopilot", {
+        slug: current,
+        channelIds: $$("#a-channels input:checked").map((x) => x.value),
+        startDate: $("#a-date").value,
+        time: $("#a-time").value,
+        offset: new Date(`${$("#a-date").value}T${$("#a-time").value}`).getTimezoneOffset(),
+      })
+      const r = await follow(job, box)
+      box.innerHTML += r.results
+        .map((x) => (x.ok ? `<div class="ok">✓ ${esc(fmt(x.dueAt))} · ${esc(x.service)} · ${esc(x.file.split("/").pop())}</div>` : `<div class="err">${x.skipped ? "–" : "✗"} ${esc(x.service)} · ${esc(x.file.split("/").pop())}: ${esc(x.error)}</div>`))
+        .join("")
+      await load()
+    } catch {}
+  }),
+)
+
 // ───────────── Post ─────────────
 
 const fmt = (iso) => (iso ? new Date(iso).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) : "next free slot")
@@ -380,15 +416,8 @@ const openDrawer = (it) => {
   $("#d-caption").value = it.caption
   $("#d-time").value = tomorrowAt10()
   $("#d-job").classList.add("hidden")
-  const isVideo = it.file.endsWith(".mp4")
-  $("#d-channels").innerHTML = state.channels.length
-    ? state.channels
-        .map((c) => {
-          const no = c.service === "youtube" && !isVideo ? "YouTube only takes video" : ""
-          return `<label class="inline"><input type="checkbox" value="${esc(c.id)}" ${no ? "disabled" : ""}> <span class="svc">${esc(c.service)}</span> ${esc(c.displayName || c.name)} ${no ? `<span class="hint">(${no})</span>` : ""}</label>`
-        })
-        .join("")
-    : `<p class="warn">Connect Buffer first (Connect tab).</p>`
+  $("#d-channels").innerHTML = ""
+  channelBoxes($("#d-channels"), it.file.endsWith(".mp4"))
   $("#drawer").classList.remove("hidden")
   $("#drawer").setAttribute("aria-hidden", "false")
 }

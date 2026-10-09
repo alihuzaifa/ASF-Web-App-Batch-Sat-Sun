@@ -1,8 +1,8 @@
 @echo off
-title Brag Studio
+title Social Media Automation
 cd /d "%~dp0"
 
-rem Double-click this file to open Brag Studio. Keep the black window open while you use it.
+rem Double-click this file to open Social Media Automation. Keep the black window open while you use it.
 
 where node >nul 2>nul || goto nonode
 node -e "process.exit(+process.versions.node.split('.')[0] < 20 ? 1 : 0)" || goto oldnode
@@ -16,7 +16,7 @@ if not exist node_modules\remotion\ (
 
 node app\server.mjs
 echo.
-echo  Brag Studio stopped. You can close this window.
+echo  Social Media Automation stopped. You can close this window.
 pause
 exit /b 0
 

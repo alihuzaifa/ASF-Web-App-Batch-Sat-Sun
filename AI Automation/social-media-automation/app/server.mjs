@@ -1,4 +1,4 @@
-// Brag Studio: a small app that runs on this computer and opens in the browser.
+// Social Media Automation: a small app that runs on this computer and opens in the browser.
 // Start.cmd starts it. Nobody has to type a command.
 
 import http from "node:http"
@@ -12,10 +12,11 @@ import { BASE, DATA, MUSIC, OUTPUT, PORT, PROJECTS, UI } from "./lib/paths.mjs"
 import { loadEnv, masked, saveEnv } from "./lib/env.mjs"
 import { readJson, slugify, writeJson } from "./lib/store.mjs"
 import * as buffer from "./lib/buffer.mjs"
-import { ensureProject } from "./lib/cloudflare.mjs"
+import { ensureProject, findAccount } from "./lib/cloudflare.mjs"
 import { readProject } from "./lib/reader.mjs"
 import { make, prepareBrowser } from "./lib/render.mjs"
 import { listPosts, refresh, schedule } from "./lib/publish.mjs"
+import { autopilot } from "./lib/autopilot.mjs"
 import { captionsFor } from "./lib/captions.mjs"
 import { hasClaude, polish } from "./lib/ai.mjs"
 
@@ -169,11 +170,12 @@ const api = {
       channelCache = list
       out.channels = list
     }
-    const accountId = b.accountId?.trim() || env.CLOUDFLARE_ACCOUNT_ID
     const token = b.cfToken?.trim() || env.CLOUDFLARE_API_TOKEN
     if (b.accountId?.trim() || b.cfToken?.trim() || b.pagesProject?.trim()) {
-      if (!accountId || !token) throw new Error("Cloudflare needs both the account ID and the token.")
-      const name = slugify(b.pagesProject || env.PAGES_PROJECT || "brag-media").slice(0, 28)
+      if (!token) throw new Error("Paste the Cloudflare token.")
+      // a new token may belong to a different account, so look it up again
+      const accountId = b.accountId?.trim() || (!b.cfToken?.trim() && env.CLOUDFLARE_ACCOUNT_ID) || (await findAccount(token)).id
+      const name = slugify(b.pagesProject || env.PAGES_PROJECT || "social-media-files").slice(0, 28)
       const host = await ensureProject({ CLOUDFLARE_ACCOUNT_ID: accountId, CLOUDFLARE_API_TOKEN: token }, name)
       Object.assign(next, { CLOUDFLARE_ACCOUNT_ID: accountId, CLOUDFLARE_API_TOKEN: token, PAGES_PROJECT: name, PAGES_HOST: host })
       out.pagesHost = host
@@ -240,6 +242,12 @@ const api = {
   "POST /api/caption": async (b) => {
     const brief = await readJson(briefFile(b.slug), null)
     return { caption: captionsFor(brief, b) }
+  },
+
+  "POST /api/autopilot": async (b) => {
+    const brief = await readJson(briefFile(b.slug), null)
+    if (!brief) throw new Error("Read a project first (Project tab).")
+    return { job: startJob("Do it all", (step, progress) => autopilot({ brief, ...b }, step, progress)) }
   },
 
   "POST /api/schedule": async (b) => ({ job: startJob("Schedule", (step) => schedule(b, step)) }),
@@ -314,7 +322,7 @@ const openBrowser = () => {
 
 server.on("error", (e) => {
   if (e.code === "EADDRINUSE") {
-    console.log(`Brag Studio is already running. Opening ${BASE}`)
+    console.log(`Social Media Automation is already running. Opening ${BASE}`)
     openBrowser()
     process.exit(0)
   }
@@ -323,7 +331,7 @@ server.on("error", (e) => {
 
 await mkdir(DATA, { recursive: true })
 server.listen(PORT, "127.0.0.1", () => {
-  console.log(`\n  Brag Studio is running at ${BASE}`)
+  console.log(`\n  Social Media Automation is running at ${BASE}`)
   console.log("  Keep this window open while you use it. Close it to stop.\n")
   openBrowser()
   // get the render browser ready in the background, so the first video is not slower

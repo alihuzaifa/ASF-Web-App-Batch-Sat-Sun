@@ -8,6 +8,7 @@ import { videoBitrate } from "../app/lib/render.mjs"
 import { captionsFor, fitFor } from "../app/lib/captions.mjs"
 import { synth, toWav } from "../app/lib/music.mjs"
 import { featuresFromReadme, shorten } from "../app/lib/reader.mjs"
+import { dueAtFor, weekPlan } from "../app/lib/autopilot.mjs"
 
 const brief = {
   name: "Shop Ledger",
@@ -99,4 +100,19 @@ test("long text is cut at a word, not in the middle of one", () => {
 test("features are read from the README's features list only", () => {
   const md = "# App\n\nIntro\n\n## Features\n\n- **Fast** search with [filters](http://x)\n- ok\n* Works offline\n\n## Install\n\n- npm install"
   assert.deepEqual(featuresFromReadme(md), ["Fast search with filters", "Works offline"])
+})
+
+test("the week plan alternates pictures and videos and uses each feature once", () => {
+  const plan = weekPlan(brief)
+  assert.deepEqual(
+    plan.map((p) => p.kind),
+    ["picture", "short", "picture", "long", "picture", "picture"],
+  )
+  assert.deepEqual(plan.filter((p) => p.post === "feature").map((p) => p.featureIndex), [0, 1])
+})
+
+test("10:00 means 10:00 on the student's clock", () => {
+  // Karachi is UTC+5, so the browser reports an offset of -300 minutes
+  assert.equal(dueAtFor({ startDate: "2026-10-10", time: "10:00", offset: -300 }, 0), "2026-10-10T05:00:00.000Z")
+  assert.equal(dueAtFor({ startDate: "2026-10-31", time: "21:30", offset: -300 }, 1), "2026-11-01T16:30:00.000Z")
 })

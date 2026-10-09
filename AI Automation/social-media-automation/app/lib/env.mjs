@@ -22,7 +22,7 @@ export const loadEnv = async () => {
 export const saveEnv = async (values) => {
   const merged = { ...(await loadEnv()), ...values }
   const lines = [
-    "# Brag Studio keys. Never send this file to anyone and never commit it.",
+    "# Social Media Automation keys. Never send this file to anyone and never commit it.",
     ...KEYS.filter((k) => merged[k]).map((k) => `${k}=${merged[k]}`),
     "",
   ]

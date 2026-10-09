@@ -115,3 +115,8 @@ th { color: var(--muted); font-weight: 600; }
   .current { margin-left: 0; width: 100%; }
   .current select { flex: 1; }
 }
+
+.auto { border-color: #c7c4fb; background: #fbfbff; }
+.auto .row label { flex: 1; min-width: 160px; }
+details { margin: 8px 0; }
+summary { cursor: pointer; }

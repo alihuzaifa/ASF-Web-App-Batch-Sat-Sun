@@ -1,16 +1,21 @@
-# Brag Studio
+# Social Media Automation
 
-Give it your project's website. It takes pictures of the pages, asks you a few
-questions, then makes:
+For students: give it the website you built, and it makes your social media
+posts and schedules them for you.
+
+You only give it **two things**:
+
+1. a **Buffer API key** (Buffer posts to Instagram, Facebook, TikTok, YouTube, LinkedIn, X)
+2. a **Cloudflare Pages token** (Cloudflare keeps the pictures and videos online so Buffer can fetch them)
+
+Everything else it does by itself: it opens your website, takes pictures of the
+pages, works out what your project does, and makes
 
 - **pictures** for the feed: a launch card, one card per feature, a "what it does" list
-- **a short brag video** (about 25 seconds, music included) for Reels, TikTok and Shorts
+- **a short launch video** (about 25 seconds, music included) for Reels, TikTok and Shorts
 - **a long tour video** that scrolls through every page, plus your own screen recording if you add one
 
-Then it posts them for you through **Buffer**, at the time you pick. The files
-are kept online on **Cloudflare Pages** so Buffer can fetch them.
-
-All you need are two things: a Buffer key and a Cloudflare token. No commands to type.
+Then **Do it all for me** schedules a week of them, one a day. No commands to type.
 
 ---
 
@@ -21,35 +26,36 @@ The first time it gets everything ready (a few minutes). If Node is missing it
 installs it and asks you to double-click Start again. Then your browser opens
 the app. Keep the black window open while you use it; close it to stop.
 
-**2. Connect tab: paste your keys.** The page shows where to get each one:
+**2. Connect tab: paste your two keys.** The page shows the steps:
 
 | key | where |
 |---|---|
-| Buffer key | [publish.buffer.com/settings/api](https://publish.buffer.com/settings/api) → New key |
-| Cloudflare account ID | [dash.cloudflare.com](https://dash.cloudflare.com) → three dots next to your account → Copy account ID |
-| Cloudflare token | My Profile → API Tokens → Create Token → Custom token → **Account · Cloudflare Pages · Edit** |
+| Buffer API key | Connect your accounts in Buffer first, then [publish.buffer.com/settings/api](https://publish.buffer.com/settings/api) → New key |
+| Cloudflare token | Free account at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up) → My Profile → API Tokens → Create Custom Token → **Account · Cloudflare Pages · Edit** |
 
-Press **Check and save**. It tests each key, creates the media site on
-Cloudflare, and lists the accounts connected in Buffer. Keys are saved in
-`.env.local` on this computer only. Never send that file to anyone.
+Press **Check and save**. It tests both keys, finds your Cloudflare account,
+creates the media site, and lists the accounts connected in Buffer. Keys are
+saved in `.env.local` on your computer only. Never send that file to anyone,
+and never put it on GitHub.
 
-**3. Project tab: paste the website link** (and the GitHub link if you have one)
-and press **Read my project**. It fills in the answers. Fix anything that is
-wrong, untick pages you don't want, press **Save answers**.
+**3. Project tab: paste your website link** (and your GitHub link if the repo is
+public) and press **Read my project**. The answers fill in by themselves. Read
+them, fix anything that is not true, press **Save answers**.
 
-**4. Make tab: pick what to make.** Pictures take a few seconds, videos a minute
-or two. You see the result and the words to post with it.
+**4. Make tab → Do it all for me.** Tick where to post, pick the first day and
+the time, press **Make and schedule a week**. It makes everything (about 5
+minutes) and schedules one post a day. That's it.
 
-**5. Post tab: click a file**, edit the words, tick where it should go, pick a
-time, press **Schedule**. The table at the bottom shows what is waiting and what
-went out (**Check status** asks Buffer).
+Want just one file instead? Use the cards under it to make a single picture or
+video, then schedule it from the **Post** tab. The Post tab also shows what is
+waiting and what went out (**Check status** asks Buffer).
 
 ---
 
 ## Good to know
 
-- **Nothing is posted unless you press Schedule.** Making files never uploads anything.
-- **Buffer's free plan** allows 3 accounts and 10 waiting posts per account.
+- **Nothing is posted unless you press Schedule or Make and schedule a week.** Making single files never uploads anything.
+- **Buffer's free plan** allows 3 accounts and 10 waiting posts per account. A week from Do it all for me uses 6 or 7 of those.
 - **One file can be at most 25 MB** (Cloudflare's limit). The app sets the
   video quality so every file fits. Long videos over ~100 seconds come out at 720p.
 - **Facebook reels stop at 90 seconds**, so a longer video goes to Facebook as a normal video post.
@@ -83,12 +89,13 @@ app/server.mjs         local server on http://localhost:4545 (no framework)
 app/lib/reader.mjs     opens the site with Playwright (Edge/Chrome), screenshots, GitHub README
 app/lib/render.mjs     Remotion bundle + renderStill/renderMedia, bitrate kept under 25 MB
 app/lib/music.mjs      the music: sine waves and noise, Am F C G, written as WAV
+app/lib/autopilot.mjs  "Do it all for me": the week plan, make each, one upload, schedule
 app/lib/publish.mjs    stage files -> wrangler pages deploy --branch main -> check -> Buffer createPost
 app/lib/buffer.mjs     Buffer GraphQL (api.buffer.com), per-service metadata and limits
 app/lib/cloudflare.mjs Pages project create/lookup, deploy, content-type check
 app/ui/                the page: four tabs, plain JS
 video/                 Remotion compositions: Post (still), Short, Tour
-plugin/, .claude-plugin/  Claude Code marketplace with a /brag command
+plugin/, .claude-plugin/  Claude Code marketplace with a /social command
 data/                  (gitignored) projects, screenshots, music, posts.json
 output/                (gitignored) the finished pictures and videos
 ```
@@ -103,8 +110,8 @@ As a Claude Code plugin:
 
 ```
 /plugin marketplace add "<path to this folder>"
-/plugin install brag-studio@brag-studio-marketplace
-/brag https://your-site.com
+/plugin install social-media-automation@social-media-marketplace
+/social https://your-site.com
 ```
 
 The Cloudflare and Buffer handling follows `ghaznawi-marketing`: Pages answers

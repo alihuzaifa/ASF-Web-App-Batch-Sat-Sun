@@ -1,5 +1,5 @@
 {
-  "name": "brag-studio",
+  "name": "social-media-automation",
   "version": "1.0.0",
   "description": "Makes launch pictures, short videos and long tour videos for a project, then schedules them with Buffer. Media is hosted on Cloudflare Pages.",
   "private": true,

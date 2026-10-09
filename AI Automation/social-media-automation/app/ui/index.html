@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brag Studio</title>
+  <title>Social Media Automation</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <header>
-    <div class="brand">Brag Studio</div>
+    <div class="brand">Social Media Automation</div>
     <nav id="tabs">
       <a href="#connect">1. Connect</a>
       <a href="#project">2. Project</a>
@@ -41,14 +41,17 @@
       <div class="card">
         <h2>Cloudflare Pages <span class="hint">keeps your pictures and videos online so Buffer can fetch them</span></h2>
         <ol class="steps">
-          <li>Open <a href="https://dash.cloudflare.com" target="_blank" rel="noopener">dash.cloudflare.com</a> (a free account is enough, no card).</li>
-          <li><b>Account ID</b>: on the home page, click the three dots next to your account name and pick <b>Copy account ID</b>.</li>
-          <li><b>Token</b>: your picture (top right) → <b>My Profile</b> → <b>API Tokens</b> → <b>Create Token</b> → <b>Custom token</b>.
-            Permission: <b>Account</b> · <b>Cloudflare Pages</b> · <b>Edit</b>. Nothing else. Create it and copy it.</li>
+          <li>Open <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">dash.cloudflare.com</a> and make a free account (no card needed).</li>
+          <li>Click your picture (top right) → <b>My Profile</b> → <b>API Tokens</b> → <b>Create Token</b> → <b>Create Custom Token</b>.</li>
+          <li>Under Permissions pick <b>Account</b> · <b>Cloudflare Pages</b> · <b>Edit</b>. Nothing else. Click <b>Continue</b>, then <b>Create Token</b>, and copy it.</li>
         </ol>
-        <label>Account ID <input id="cf-account" autocomplete="off" placeholder="32 letters and numbers"></label>
-        <label>Token <input id="cf-token" type="password" autocomplete="off" placeholder="paste the token"></label>
-        <label>Name for the media site <input id="cf-project" autocomplete="off" placeholder="brag-media"></label>
+        <label>Cloudflare token <input id="cf-token" type="password" autocomplete="off" placeholder="paste the token"></label>
+        <details>
+          <summary class="hint">Only if the app asks for it: account ID</summary>
+          <label>Account ID <span class="hint">(Cloudflare home page → three dots next to your account → Copy account ID)</span>
+            <input id="cf-account" autocomplete="off" placeholder="32 letters and numbers"></label>
+        </details>
+        <label>Name for the media site <input id="cf-project" autocomplete="off" placeholder="social-media-files"></label>
       </div>
 
       <button id="connect-save" class="primary">Check and save</button>
@@ -111,6 +114,21 @@
     <section id="make" class="tab">
       <h1>Make pictures and videos</h1>
       <p id="make-none" class="warn hidden">Read a project on the Project tab first.</p>
+      <div id="auto" class="card auto">
+        <h2>Do it all for me</h2>
+        <p class="hint">Makes a week of posts (pictures, a short video and a long video) and schedules one a day at the same time. You can still make single files below.</p>
+        <fieldset>
+          <legend>Where</legend>
+          <div id="a-channels" class="checks"></div>
+        </fieldset>
+        <div class="row">
+          <label>First day <input id="a-date" type="date"></label>
+          <label>Time <input id="a-time" type="time" value="10:00"></label>
+        </div>
+        <button id="a-go" class="primary">Make and schedule a week</button>
+        <div id="a-job" class="job hidden"></div>
+      </div>
+      <h2>Or make one at a time</h2>
       <div id="make-cards" class="grid3">
         <div class="card">
           <h2>Picture</h2>
@@ -133,7 +151,7 @@
         </div>
         <div class="card">
           <h2>Short video <span class="hint">about 25 seconds, with music</span></h2>
-          <p class="hint">The brag video: your hook, the name, what it does, a fast run through the pages, then the link.</p>
+          <p class="hint">The launch video: your hook, the name, what it does, a fast run through the pages, then the link.</p>
           <label>Shape
             <select id="m-short-shape">
               <option value="story">Tall 9:16 (Reels, TikTok, Shorts)</option>

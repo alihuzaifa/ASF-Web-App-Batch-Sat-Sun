@@ -34,9 +34,25 @@ const api = async (env, method, route, body) => {
 
 const explain = (r) => {
   const msg = r.json?.errors?.map((e) => e.message).join("; ") || `status ${r.status}`
-  if (r.status === 401 || r.status === 403 || /auth/i.test(msg))
+  if (r.status === 401 || r.status === 403 || /auth|header|token/i.test(msg))
     return `Cloudflare did not accept the token or account ID (${msg}). The token needs "Account · Cloudflare Pages · Edit".`
   return `Cloudflare said: ${msg}`
+}
+
+/**
+ * The account ID, found from the token alone, so a student only has to paste
+ * one thing. If the token can see several accounts the first one is used.
+ */
+export const findAccount = async (token) => {
+  const res = await fetch("https://api.cloudflare.com/client/v4/accounts?per_page=5", {
+    headers: { Authorization: `Bearer ${token}` },
+    signal: AbortSignal.timeout(30000),
+  })
+  const json = await res.json().catch(() => null)
+  if (res.status === 401 || res.status === 403 || json?.success === false) throw new Error(explain({ status: res.status, json }))
+  const first = json?.result?.[0]
+  if (!first) throw new Error("The token works but cannot see any account. Make it again with \"Account · Cloudflare Pages · Edit\" on your account.")
+  return { id: first.id, name: first.name }
 }
 
 /**
