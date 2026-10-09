@@ -1,0 +1,292 @@
+{
+  "cf-1-signup": {
+    "file": "cf-1-signup.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 568,
+        "y": 385,
+        "w": 448,
+        "h": 414
+      }
+    ]
+  },
+  "cf-2-menu": {
+    "file": "cf-2-menu.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 1537,
+        "y": 13,
+        "w": 32,
+        "h": 32
+      },
+      {
+        "x": 1409,
+        "y": 102,
+        "w": 41,
+        "h": 21
+      }
+    ]
+  },
+  "cf-3-tokens": {
+    "file": "cf-3-tokens.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 1290,
+        "y": 99,
+        "w": 131,
+        "h": 36
+      }
+    ]
+  },
+  "cf-4-custom": {
+    "file": "cf-4-custom.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 1092,
+        "y": 187,
+        "w": 97,
+        "h": 36
+      }
+    ]
+  },
+  "cf-5-name": {
+    "file": "cf-5-name.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 453,
+        "y": 187,
+        "w": 448,
+        "h": 36
+      }
+    ]
+  },
+  "cf-6-permission": {
+    "file": "cf-6-permission.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 454,
+        "y": 309,
+        "w": 128,
+        "h": 36
+      },
+      {
+        "x": 590,
+        "y": 309,
+        "w": 393,
+        "h": 36
+      },
+      {
+        "x": 991,
+        "y": 309,
+        "w": 197,
+        "h": 36
+      }
+    ]
+  },
+  "cf-7-continue": {
+    "file": "cf-7-continue.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 1040,
+        "y": 784,
+        "w": 165,
+        "h": 36
+      }
+    ]
+  },
+  "cf-8-create": {
+    "file": "cf-8-create.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 1101,
+        "y": 288,
+        "w": 111,
+        "h": 36
+      }
+    ]
+  },
+  "cf-9-copy": {
+    "file": "cf-9-copy.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 462,
+        "y": 188,
+        "w": 734,
+        "h": 40
+      }
+    ]
+  },
+  "bf-1-signup": {
+    "file": "bf-1-signup.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 220,
+        "y": 357,
+        "w": 360,
+        "h": 300
+      }
+    ]
+  },
+  "bf-2-channels": {
+    "file": "bf-2-channels.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 12,
+        "y": 336,
+        "w": 201,
+        "h": 32
+      },
+      {
+        "x": 1076,
+        "y": 49,
+        "w": 140,
+        "h": 32
+      }
+    ]
+  },
+  "bf-3-pick": {
+    "file": "bf-3-pick.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 452,
+        "y": 170,
+        "w": 240,
+        "h": 165
+      }
+    ]
+  },
+  "app-1-buffer": {
+    "file": "app-1-buffer.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 287,
+        "y": 499,
+        "w": 1026,
+        "h": 45
+      }
+    ]
+  },
+  "app-2-cloudflare": {
+    "file": "app-2-cloudflare.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 287,
+        "y": 558,
+        "w": 1026,
+        "h": 45
+      },
+      {
+        "x": 266,
+        "y": 766,
+        "w": 143,
+        "h": 45
+      }
+    ]
+  },
+  "bf-4-api": {
+    "file": "bf-4-api.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 12,
+        "y": 620,
+        "w": 201,
+        "h": 32
+      }
+    ]
+  },
+  "bf-5-new": {
+    "file": "bf-5-new.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 649,
+        "y": 294,
+        "w": 115,
+        "h": 40
+      }
+    ]
+  },
+  "bf-6-name": {
+    "file": "bf-6-name.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 568,
+        "y": 203,
+        "w": 464,
+        "h": 40
+      }
+    ]
+  },
+  "bf-7-expiry": {
+    "file": "bf-7-expiry.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 568,
+        "y": 288,
+        "w": 464,
+        "h": 40
+      }
+    ]
+  },
+  "bf-8-generate": {
+    "file": "bf-8-generate.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 891,
+        "y": 790,
+        "w": 141,
+        "h": 32
+      }
+    ]
+  },
+  "bf-9-copy": {
+    "file": "bf-9-copy.png",
+    "width": 1600,
+    "height": 900,
+    "boxes": [
+      {
+        "x": 566,
+        "y": 377,
+        "w": 466,
+        "h": 36
+      }
+    ]
+  }
+}

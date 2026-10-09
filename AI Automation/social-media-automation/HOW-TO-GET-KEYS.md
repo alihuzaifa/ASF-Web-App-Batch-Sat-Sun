@@ -2,7 +2,7 @@
 
 The app needs two things from you. Both are free and take about five minutes.
 
-Prefer to watch? **[docs/how-to-get-keys.mp4](docs/how-to-get-keys.mp4)** (79 seconds). The same video plays on the app's Connect tab.
+Prefer to watch? **[docs/how-to-get-keys.mp4](docs/how-to-get-keys.mp4)** (2 minutes, real screens, every click highlighted). The same video plays on the app's Connect tab.
 
 | | what it is | what the app uses it for |
 |---|---|---|
@@ -13,13 +13,17 @@ Prefer to watch? **[docs/how-to-get-keys.mp4](docs/how-to-get-keys.mp4)** (79 se
 
 ## Key 1: Buffer API key
 
-1. **Make a free account** at [buffer.com](https://buffer.com).
-2. **Connect the accounts you want to post to.** Buffer asks you to connect a channel right after sign-up; later you add more from **Channels** in the left menu. Log in to Instagram, Facebook, TikTok and so on when it asks.
-   - **Instagram must be a Business or Creator account.** A personal account cannot be posted to by Buffer. Switch it in the Instagram app: Settings and activity → Account type and tools → Switch to professional account.
-   - The free plan takes **3 accounts** and **10 waiting posts per account**.
-3. **Open the API page:** [publish.buffer.com/settings/api](https://publish.buffer.com/settings/api)
-4. **Make a new key:** click **New key**, give it any name (for example "social media automation"), and **copy** it.
-5. **Paste it in the app:** Connect tab → **Buffer key**.
+1. **Make a free account** at [buffer.com](https://buffer.com), then **open the email Buffer sends you and click the link**. The API page stays locked until your email is verified.
+2. **Connect the accounts you want to post to:** Settings → **Channels** → **Connect Channel**, pick Instagram, Facebook, TikTok and so on, and log in there.
+   - **Instagram: use a Business or Creator account** so posts go out by themselves. Switch it in the Instagram app: Settings and activity → Account type and tools → Switch to professional account.
+   - The free plan takes **3 channels** and **10 waiting posts per channel**.
+3. **Open the API page:** Settings → **API**, or go straight to [publish.buffer.com/settings/api](https://publish.buffer.com/settings/api).
+4. Click **New Key**.
+5. **Key Name:** anything, for example `social media automation`.
+6. **Expiration: pick 1 year** (the longest). The key stops working when it expires; then make a new one and paste it in the app again.
+7. Leave every **permission** ticked and click **Generate API Key**.
+8. **Copy** the key (the button next to it), then **Done**.
+9. **Paste it in the app:** Connect tab → **Buffer key**.
 
 Added a new account in Buffer later? Connect tab → **Check again**, and it shows up.
 
@@ -30,11 +34,11 @@ Added a new account in Buffer later? Connect tab → **Check again**, and it sho
 1. **Make a free account** at [dash.cloudflare.com/sign-up](https://dash.cloudflare.com/sign-up). No card needed. Confirm your email.
 2. **Open your API tokens:** click your picture (top right) → **My Profile** → **API Tokens**.
    Or go straight to [dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens).
-3. **Start a custom token:** **Create Token** → at the bottom, **Create Custom Token** → **Get started**.
+3. **Start a custom token:** **Create Token** → at the top, **Create Custom Token** → **Get started**.
 4. **Fill it in:**
    - **Token name:** anything, for example `social media automation`
    - **Permissions:** pick **Account**, then **Cloudflare Pages**, then **Edit**. Add nothing else.
-   - **Account Resources:** leave it on your account (Include → your account).
+   - **Account Resources:** leave it as it is (Include → All accounts).
    - Leave the rest as it is.
 5. **Create it and copy it now:** **Continue to summary** → **Create Token** → **Copy**.
    Cloudflare shows the token **only once**. If you lose it, delete it and make a new one.
@@ -59,7 +63,8 @@ account, open the small **"Only if the app asks for it: account ID"** box and pa
 
 | the app says | what to do |
 |---|---|
-| "Buffer did not accept the key" | Copy it again from the API page. Still failing? Make a new key. |
+| "Buffer did not accept the key" | Copy it again. Still failing, or it is over a year old? Make a new key (it may have expired). |
+| Buffer's API page says "verify your email" | Open the email from Buffer and click the link, then refresh the page. |
 | Buffer works but shows **0 accounts** | Connect your accounts in Buffer first (step 2), then **Check again**. |
 | "Cloudflare did not accept the token" | The permission is wrong. Make a new token with **Account · Cloudflare Pages · Edit**. |
 | "The token works but cannot see any account" | Under **Account Resources** pick your account, or paste the account ID in the small box. |

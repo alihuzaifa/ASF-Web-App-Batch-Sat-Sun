@@ -3,7 +3,7 @@ import { Composition, Still } from "remotion"
 import { Post } from "./Post"
 import { Short, shortPlan } from "./Short"
 import { Tour, tourPlan } from "./Tour"
-import { Guide, guideLength } from "./Guide"
+import { Walkthrough, walkLength, type WalkProps } from "./Walkthrough"
 import { FPS, SIZES, type Props } from "./types"
 
 // Sample props so `npm run studio` opens on something. The app always passes real ones.
@@ -53,6 +53,15 @@ export const Root: React.FC = () => (
       defaultProps={{ ...sample, shape: "wide" }}
       calculateMetadata={({ props }) => ({ ...SIZES[props.shape], durationInFrames: tourPlan(props).total })}
     />
-    <Composition id="Guide" component={Guide} fps={FPS} width={1920} height={1080} durationInFrames={guideLength()} defaultProps={{}} />
+    <Composition
+      id="Walkthrough"
+      component={Walkthrough}
+      fps={FPS}
+      width={1920}
+      height={1080}
+      durationInFrames={300}
+      defaultProps={{ scenes: [] } as WalkProps}
+      calculateMetadata={({ props }) => ({ durationInFrames: Math.max(1, walkLength(props)) })}
+    />
   </>
 )
