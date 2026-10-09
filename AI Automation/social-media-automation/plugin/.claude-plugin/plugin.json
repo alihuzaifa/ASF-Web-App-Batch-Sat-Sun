@@ -1,0 +1,6 @@
+{
+  "name": "social-media-automation",
+  "version": "1.0.0",
+  "description": "Make launch pictures, a short launch video and a long tour video for a project, then schedule them with Buffer.",
+  "author": { "name": "Ali Huzaifa" }
+}

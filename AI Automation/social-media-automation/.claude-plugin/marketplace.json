@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "social-media-marketplace",
+  "version": "1.0.0",
+  "description": "Social Media Automation: reads a project's website, makes launch pictures, a short launch video and a long tour video with its own music, and schedules them through Buffer with the files hosted on Cloudflare Pages.",
+  "owner": { "name": "Ali Huzaifa" },
+  "plugins": [
+    {
+      "name": "social-media-automation",
+      "source": "./plugin",
+      "description": "Open Social Media Automation, or fill a project's answers from the code in the current folder, then make pictures and videos and schedule them with Buffer.",
+      "category": "content",
+      "tags": ["video", "image", "launch", "buffer", "cloudflare", "remotion", "social"],
+      "version": "1.0.0",
+      "author": { "name": "Ali Huzaifa" }
+    }
+  ]
+}
